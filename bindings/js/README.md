@@ -1,6 +1,8 @@
 # Ethiopian Date Converter - JavaScript
 
-JavaScript binding for high-performance Ethiopian calendar date conversion using the proven Beyene-Kudlek algorithm.
+**Pure JavaScript binding** for high-performance Ethiopian calendar date conversion using the proven Beyene-Kudlek algorithm.
+
+> **For TypeScript projects**: Use `@ethiopian-date-converter/ts` for native TypeScript implementation with full type safety.
 
 ## Installation
 

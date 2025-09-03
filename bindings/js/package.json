@@ -1,9 +1,8 @@
-{
-  "name": "@ethiopian-date-converter/js",
+ {
+  "name": "ethiopian-date-converter-js",
   "version": "1.0.0",
-  "description": "JavaScript binding for Ethiopian calendar date conversion",
+  "description": "Pure JavaScript binding for Ethiopian calendar date conversion",
   "main": "index.js",
-  "types": "index.d.ts",
   "scripts": {
     "install": "node-gyp rebuild",
     "build": "node-gyp rebuild",
@@ -15,7 +14,10 @@
     "date",
     "conversion", 
     "gregorian",
-    "ge'ez"
+    "ge'ez",
+    "javascript",
+    "js",
+    "node"
   ],
   "author": "Abiy",
   "license": "MIT",

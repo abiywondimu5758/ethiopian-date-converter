@@ -93,24 +93,24 @@ Ethiopian New Year 2017: 2024-09-11 (Gregorian)
 Christmas 2024: 2017-04-16 (Ethiopian)
 
 === Date Validation Tests ===
-✓ All validation tests passed
+All validation tests passed
 
 === Leap Year Tests ===
-✓ All leap year tests passed
+All leap year tests passed
 
 Running Ethiopian Calendar Conversion Tests...
 
 Test 1 - Basic conversion 1:
   Ethiopian 1855-2-20 -> Gregorian 1862-10-29: PASS
   Gregorian 1862-10-29 -> Ethiopian 1855-2-20: PASS
-  ✓ BOTH DIRECTIONS PASS
+  BOTH DIRECTIONS PASS
 
 [... 8 more tests ...]
 
 Results: 9/9 tests passed (100.0%)
-🎉 ALL TESTS PASSED! Implementation is correct.
+ALL TESTS PASSED! Implementation is correct.
 
-🎉 ALL TEST SUITES COMPLETED SUCCESSFULLY!
+ALL TEST SUITES COMPLETED SUCCESSFULLY!
 The Ethiopian Calendar C implementation is working correctly with 100% accuracy.
 ```
 

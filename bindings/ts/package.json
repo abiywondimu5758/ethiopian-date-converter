@@ -1,0 +1,63 @@
+{
+  "name": "ethiopian-date-converter-ts",
+  "version": "1.0.0",
+  "description": "TypeScript binding for Ethiopian calendar date conversion",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc && node build-native.js",
+    "build:ts": "tsc",
+    "build:native": "node build-native.js",
+    "dev": "tsc --watch",
+    "test": "npm run build && node dist/test/test.js",
+    "test:ts": "ts-node src/test/test.ts",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "ethiopian",
+    "calendar",
+    "date",
+    "conversion", 
+    "gregorian",
+    "ge'ez",
+    "typescript",
+    "ts"
+  ],
+  "author": "Abiy",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abiywondimu5758/ethiopian-date-converter.git",
+    "directory": "bindings/ts"
+  },
+  "dependencies": {
+    "node-addon-api": "^8.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.0",
+    "rimraf": "^5.0.0",
+    "node-gyp": "^10.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "files": [
+    "dist/",
+    "src/",
+    "binding.gyp",
+    "build-native.js"
+  ],
+  "gypfile": true
+}
+

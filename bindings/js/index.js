@@ -1,6 +1,15 @@
 /* Copyright (c) 2025 Abiy */
 
 const addon = require('./build/Release/ethiopic_calendar');
+const { 
+    EthiopicDate, 
+    GregorianDate, 
+    CalendarUtils, 
+    MONTH_NAMES, 
+    DAY_NAMES, 
+    ETHIOPIAN_HOLIDAYS, 
+    ETHIOPIAN_SEASONS 
+} = require('./lib/enhanced-date-converter');
 
 class DateConverter {
     
@@ -24,6 +33,35 @@ class DateConverter {
         return addon.isGregorianLeap(year);
     }
     
+    // JDN helper methods
+    static ethiopicToJDN(year, month, day, era = null) {
+        return addon.ethiopicToJDN(year, month, day, era);
+    }
+    
+    static gregorianToJDN(year, month, day) {
+        return addon.gregorianToJDN(year, month, day);
+    }
+    
+    static jdnToEthiopic(jdn, era = null) {
+        return addon.jdnToEthiopic(jdn, era);
+    }
+    
+    static jdnToGregorian(jdn) {
+        return addon.jdnToGregorian(jdn);
+    }
+    
+    static getDayOfWeek(jdn) {
+        return addon.getDayOfWeek(jdn);
+    }
+    
+    // Convenience methods for current dates
+    static today() {
+        return {
+            ethiopic: EthiopicDate.today(),
+            gregorian: GregorianDate.today()
+        };
+    }
+    
     static get EPOCHS() {
         return {
             AMETE_ALEM: addon.JD_EPOCH_OFFSET_AMETE_ALEM,
@@ -34,6 +72,7 @@ class DateConverter {
 }
 
 
+// Legacy function exports for backward compatibility
 function ethiopicToGregorian(year, month, day, era = null) {
     return DateConverter.ethiopicToGregorian(year, month, day, era);
 }
@@ -43,11 +82,30 @@ function gregorianToEthiopic(year, month, day) {
 }
 
 module.exports = {
+    // Legacy exports (backward compatibility)
     DateConverter,
     ethiopicToGregorian,
     gregorianToEthiopic,
     isValidEthiopicDate: DateConverter.isValidEthiopicDate,
     isValidGregorianDate: DateConverter.isValidGregorianDate,
     isGregorianLeap: DateConverter.isGregorianLeap,
-    EPOCHS: DateConverter.EPOCHS
+    EPOCHS: DateConverter.EPOCHS,
+    
+    // New enhanced date classes
+    EthiopicDate,
+    GregorianDate,
+    CalendarUtils,
+    
+    // JDN utilities
+    ethiopicToJDN: DateConverter.ethiopicToJDN,
+    gregorianToJDN: DateConverter.gregorianToJDN,
+    jdnToEthiopic: DateConverter.jdnToEthiopic,
+    jdnToGregorian: DateConverter.jdnToGregorian,
+    getDayOfWeek: DateConverter.getDayOfWeek,
+    
+    // Constants and data
+    MONTH_NAMES,
+    DAY_NAMES,
+    ETHIOPIAN_HOLIDAYS,
+    ETHIOPIAN_SEASONS
 };
