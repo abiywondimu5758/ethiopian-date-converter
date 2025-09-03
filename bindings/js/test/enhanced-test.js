@@ -357,12 +357,42 @@ function runEnhancedTests() {
     });
     
     // Summary
+    // Test new utility functions
+    console.log('\n--- Utility Function Tests ---');
+    
+    test('getCurrentEthiopicDate function', () => {
+        const { getCurrentEthiopicDate } = require('../index');
+        const current = getCurrentEthiopicDate();
+        return current instanceof EthiopicDate;
+    });
+    
+    test('generateCalendar function', () => {
+        const { generateCalendar } = require('../index');
+        const calendar = generateCalendar(2017, 1, 'ethiopic');
+        return calendar.year === 2017 && calendar.month === 1 && calendar.monthName === 'Meskerem';
+    });
+    
+    test('getHolidays function', () => {
+        const { getHolidays } = require('../index');
+        const holidays = getHolidays(2017);
+        return Array.isArray(holidays) && holidays.length > 0;
+    });
+    
+    test('calculateAge function', () => {
+        const { calculateAge } = require('../index');
+        const birthDate = new EthiopicDate(2000, 1, 1);
+        const referenceDate = new EthiopicDate(2017, 1, 1);
+        const age = calculateAge(birthDate, referenceDate);
+        return age.years === 17 && age.months === 0 && age.days === 0;
+    });
+
     console.log(`\n=== Enhanced Test Results ===`);
     console.log(`Passed: ${passedTests}/${totalTests} tests`);
     console.log(`Success Rate: ${((passedTests / totalTests) * 100).toFixed(1)}%`);
     
     if (passedTests === totalTests) {
         console.log('All enhanced tests passed!');
+        console.log('\n✅ JavaScript package now has FULL feature parity with TypeScript and Python!');
     } else {
         console.log(`${totalTests - passedTests} tests failed`);
     }

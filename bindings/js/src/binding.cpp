@@ -121,6 +121,85 @@ Napi::Value IsGregorianLeap(const Napi::CallbackInfo& info) {
     return Napi::Boolean::New(env, is_gregorian_leap(year));
 }
 
+// JDN helper functions
+Napi::Value EthiopicToJDN(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
+    
+    if (info.Length() < 3) {
+        Napi::TypeError::New(env, "Expected 3 arguments: year, month, day").ThrowAsJavaScriptException();
+        return env.Null();
+    }
+    
+    int32_t year = info[0].As<Napi::Number>().Int32Value();
+    int32_t month = info[1].As<Napi::Number>().Int32Value();
+    int32_t day = info[2].As<Napi::Number>().Int32Value();
+    int64_t era = (info.Length() > 3 && !info[3].IsNull()) ? info[3].As<Napi::Number>().Int64Value() : JD_EPOCH_OFFSET_AMETE_MIHRET;
+    
+    int64_t jdn = ethiopic_to_jdn(year, month, day, era);
+    return Napi::Number::New(env, static_cast<double>(jdn));
+}
+
+Napi::Value GregorianToJDN(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
+    
+    if (info.Length() < 3) {
+        Napi::TypeError::New(env, "Expected 3 arguments: year, month, day").ThrowAsJavaScriptException();
+        return env.Null();
+    }
+    
+    int32_t year = info[0].As<Napi::Number>().Int32Value();
+    int32_t month = info[1].As<Napi::Number>().Int32Value();
+    int32_t day = info[2].As<Napi::Number>().Int32Value();
+    
+    int64_t jdn = gregorian_to_jdn(year, month, day);
+    return Napi::Number::New(env, static_cast<double>(jdn));
+}
+
+Napi::Value JDNToEthiopic(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
+    
+    if (info.Length() < 1) {
+        Napi::TypeError::New(env, "Expected 1 argument: jdn").ThrowAsJavaScriptException();
+        return env.Null();
+    }
+    
+    int64_t jdn = static_cast<int64_t>(info[0].As<Napi::Number>().DoubleValue());
+    int64_t era = (info.Length() > 1 && !info[1].IsNull()) ? info[1].As<Napi::Number>().Int64Value() : JD_EPOCH_OFFSET_AMETE_MIHRET;
+    
+    date_t result = jdn_to_ethiopic(jdn, era);
+    return CreateDateObject(env, result);
+}
+
+Napi::Value JDNToGregorian(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
+    
+    if (info.Length() < 1) {
+        Napi::TypeError::New(env, "Expected 1 argument: jdn").ThrowAsJavaScriptException();
+        return env.Null();
+    }
+    
+    int64_t jdn = static_cast<int64_t>(info[0].As<Napi::Number>().DoubleValue());
+    date_t result = jdn_to_gregorian(jdn);
+    return CreateDateObject(env, result);
+}
+
+Napi::Value GetDayOfWeek(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
+    
+    if (info.Length() < 1) {
+        Napi::TypeError::New(env, "Expected 1 argument: jdn").ThrowAsJavaScriptException();
+        return env.Null();
+    }
+    
+    int64_t jdn = static_cast<int64_t>(info[0].As<Napi::Number>().DoubleValue());
+    
+    // JDN 0 was a Monday, so we need to adjust
+    // 0 = Monday, 1 = Tuesday, ..., 6 = Sunday
+    int dayOfWeek = static_cast<int>(jdn % 7);
+    
+    return Napi::Number::New(env, dayOfWeek);
+}
+
 
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
     exports.Set("ethiopicToGregorian", Napi::Function::New(env, EthiopicToGregorian));
@@ -128,7 +207,13 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
     exports.Set("isValidEthiopicDate", Napi::Function::New(env, IsValidEthiopicDate));
     exports.Set("isValidGregorianDate", Napi::Function::New(env, IsValidGregorianDate));
     exports.Set("isGregorianLeap", Napi::Function::New(env, IsGregorianLeap));
-    
+
+    // JDN helper functions
+    exports.Set("ethiopicToJDN", Napi::Function::New(env, EthiopicToJDN));
+    exports.Set("gregorianToJDN", Napi::Function::New(env, GregorianToJDN));
+    exports.Set("jdnToEthiopic", Napi::Function::New(env, JDNToEthiopic));
+    exports.Set("jdnToGregorian", Napi::Function::New(env, JDNToGregorian));
+    exports.Set("getDayOfWeek", Napi::Function::New(env, GetDayOfWeek));
 
     exports.Set("JD_EPOCH_OFFSET_AMETE_ALEM", 
                 Napi::Number::New(env, JD_EPOCH_OFFSET_AMETE_ALEM));

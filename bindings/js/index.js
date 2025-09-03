@@ -81,20 +81,50 @@ function gregorianToEthiopic(year, month, day) {
     return DateConverter.gregorianToEthiopic(year, month, day);
 }
 
+// Utility functions
+function getCurrentEthiopicDate() {
+    return EthiopicDate.today();
+}
+
+function getCurrentGregorianDate() {
+    return GregorianDate.today();
+}
+
+function generateCalendar(year, month, type = 'ethiopic') {
+    if (type === 'ethiopic') {
+        return CalendarUtils.generateEthiopicCalendar(year, month);
+    } else {
+        return CalendarUtils.generateGregorianCalendar(year, month);
+    }
+}
+
+function getBusinessDays(startDate, endDate) {
+    return CalendarUtils.getBusinessDaysBetween(startDate, endDate);
+}
+
+function getHolidays(year) {
+    return CalendarUtils.getHolidaysInYear(year);
+}
+
+function findNextHoliday(fromDate, maxDays = 365) {
+    return CalendarUtils.findNextHoliday(fromDate, maxDays);
+}
+
+function calculateAge(birthDate, referenceDate = null) {
+    return CalendarUtils.calculateAge(birthDate, referenceDate);
+}
+
 module.exports = {
-    // Legacy exports (backward compatibility)
-    DateConverter,
+    // Core conversion functions
     ethiopicToGregorian,
     gregorianToEthiopic,
     isValidEthiopicDate: DateConverter.isValidEthiopicDate,
     isValidGregorianDate: DateConverter.isValidGregorianDate,
     isGregorianLeap: DateConverter.isGregorianLeap,
-    EPOCHS: DateConverter.EPOCHS,
     
-    // New enhanced date classes
+    // Date classes with full functionality
     EthiopicDate,
     GregorianDate,
-    CalendarUtils,
     
     // JDN utilities
     ethiopicToJDN: DateConverter.ethiopicToJDN,
@@ -103,9 +133,23 @@ module.exports = {
     jdnToGregorian: DateConverter.jdnToGregorian,
     getDayOfWeek: DateConverter.getDayOfWeek,
     
-    // Constants and data
+    // Calendar utilities
+    CalendarUtils,
+    generateCalendar,
+    getBusinessDays,
+    getCurrentEthiopicDate,
+    getCurrentGregorianDate,
+    getHolidays,
+    findNextHoliday,
+    calculateAge,
+    
+    // Constants
     MONTH_NAMES,
     DAY_NAMES,
     ETHIOPIAN_HOLIDAYS,
-    ETHIOPIAN_SEASONS
+    ETHIOPIAN_SEASONS,
+    EPOCHS: DateConverter.EPOCHS,
+    
+    // Legacy class for backward compatibility
+    DateConverter
 };
