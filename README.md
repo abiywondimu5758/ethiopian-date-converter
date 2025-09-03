@@ -34,6 +34,10 @@ pip install ethiopian-date-converter-py
 
 The core conversion logic is implemented in C for maximum performance and shared across all language bindings.
 
+## Credits
+
+Based on excellent algorithms from the [ethiopic-calendar](https://github.com/geezorg/calendar) library by Geez.org.
+
 ## License
 
 MIT
