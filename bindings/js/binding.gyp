@@ -4,11 +4,11 @@
       "target_name": "ethiopic_calendar",
       "sources": [
         "src/binding.cpp",
-        "../../core/src/ethiopic_calendar.c"
+        "src/core/ethiopic_calendar.c"
       ],
       "include_dirs": [
         "<!@(node -p \"require('node-addon-api').include\")",
-        "../../core/src"
+        "src/core"
       ],
       "defines": [
         "NAPI_DISABLE_CPP_EXCEPTIONS"

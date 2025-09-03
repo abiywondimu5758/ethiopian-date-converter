@@ -1,6 +1,6 @@
- {
+{
   "name": "ethiopian-date-converter-js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pure JavaScript binding for Ethiopian calendar date conversion",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "ethiopian",
     "calendar",
     "date",
-    "conversion", 
+    "conversion",
     "gregorian",
     "ge'ez",
     "javascript",
@@ -34,5 +34,12 @@
   "engines": {
     "node": ">=14.0.0"
   },
+  "files": [
+    "index.js",
+    "lib/",
+    "src/",
+    "binding.gyp",
+    "README.md"
+  ],
   "gypfile": true
 }
