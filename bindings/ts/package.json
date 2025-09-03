@@ -1,6 +1,6 @@
 {
   "name": "ethiopian-date-converter-ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TypeScript binding for Ethiopian calendar date conversion",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -26,7 +26,7 @@
     "ethiopian",
     "calendar",
     "date",
-    "conversion", 
+    "conversion",
     "gregorian",
     "ge'ez",
     "typescript",
@@ -60,4 +60,3 @@
   ],
   "gypfile": true
 }
-
