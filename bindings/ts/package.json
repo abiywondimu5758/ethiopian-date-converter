@@ -1,7 +1,7 @@
 {
   "name": "ethiopian-date-converter-ts",
-  "version": "1.0.1",
-  "description": "TypeScript binding for Ethiopian calendar date conversion",
+  "version": "1.0.2",
+  "description": "Ethiopian calendar date conversion for TypeScript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "module": "dist/index.mjs",

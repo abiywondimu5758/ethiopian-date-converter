@@ -1,7 +1,7 @@
 {
   "name": "ethiopian-date-converter-js",
-  "version": "1.0.1",
-  "description": "Pure JavaScript binding for Ethiopian calendar date conversion",
+  "version": "1.0.2",
+  "description": "Ethiopian calendar date conversion for JavaScript",
   "main": "index.js",
   "scripts": {
     "install": "node-gyp rebuild",
