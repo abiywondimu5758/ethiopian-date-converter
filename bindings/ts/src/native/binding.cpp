@@ -1,7 +1,7 @@
 /* Copyright (c) 2025 Abiy */
 
 #include <napi.h>
-#include "ethiopic_calendar.h"
+#include "core/ethiopic_calendar.h"
 
 
 Napi::Object CreateDateObject(Napi::Env env, const date_t& date) {
