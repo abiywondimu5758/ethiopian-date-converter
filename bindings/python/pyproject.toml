@@ -3,7 +3,7 @@ requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ethiopian-date-converter"
+name = "ethiopian-date-converter-py"
 dynamic = ["version"]
 description = "Ethiopian calendar date conversion for Python"
 readme = "README.md"

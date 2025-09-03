@@ -6,10 +6,10 @@ High-performance Ethiopian calendar date conversion for Python applications with
 
 ```bash
 # pip
-pip install ethiopian-date-converter
+pip install ethiopian-date-converter-py
 
 # conda (if available)
-conda install ethiopian-date-converter
+conda install ethiopian-date-converter-py
 ```
 
 ## Quick Start

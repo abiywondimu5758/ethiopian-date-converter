@@ -80,7 +80,7 @@ package_data = {
 }
 
 setup(
-    name="ethiopian-date-converter",
+    name="ethiopian-date-converter-py",
     version=get_version(),
     author="Abiy",
     author_email="abiywondimu1@gmail.com",

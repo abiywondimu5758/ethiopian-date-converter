@@ -33,7 +33,7 @@ The Ethiopian Date Converter for Python provides high-performance date conversio
 
 ### Installation
 ```bash
-pip install ethiopian-date-converter
+pip install ethiopian-date-converter-py
 ```
 
 ### Basic Usage

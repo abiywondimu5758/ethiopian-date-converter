@@ -13,7 +13,7 @@ This guide will help you get started with the Ethiopian Date Converter Python li
 
 ### Install from PyPI
 ```bash
-pip install ethiopian-date-converter
+pip install ethiopian-date-converter-py
 ```
 
 ### Install from Source
