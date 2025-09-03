@@ -1,0 +1,5 @@
+@PACKAGE_INIT@
+
+include("${CMAKE_CURRENT_LIST_DIR}/date-converter-coreTargets.cmake")
+
+check_required_components(date-converter-core)

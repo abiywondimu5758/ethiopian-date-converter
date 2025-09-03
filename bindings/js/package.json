@@ -1,0 +1,36 @@
+{
+  "name": "@ethiopian-date-converter/js",
+  "version": "1.0.0",
+  "description": "JavaScript binding for Ethiopian calendar date conversion",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "install": "node-gyp rebuild",
+    "build": "node-gyp rebuild",
+    "test": "node test/test.js"
+  },
+  "keywords": [
+    "ethiopian",
+    "calendar",
+    "date",
+    "conversion", 
+    "gregorian",
+    "ge'ez"
+  ],
+  "author": "Abiy",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abiywondimu5758/ethiopian-date-converter.git"
+  },
+  "dependencies": {
+    "node-addon-api": "^8.0.0"
+  },
+  "devDependencies": {
+    "node-gyp": "^10.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "gypfile": true
+}
